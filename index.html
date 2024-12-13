@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>123</title>
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+
+  <div class="container">
+    <div class="dropping-text-container">
+      <div class="dropping-texts">
+        <div class="dropping-text"><span></span> Infinite Space </div>
+        <div class="dropping-text"><span></span> Eternal Glow</div>
+        <div class="dropping-text"><span></span> Dynamic Flow</div>
+        <div class="dropping-text"><span></span> Mystic Horizon</div>
+      </div>
+    </div>
+    <div class="slides">
+      <div class="slide active">
+        <video class="slide-video" autoplay muted loop>
+            <source src="https://cdn-static.lookport.live/Sequence_02_3.mp4" type="video/mp4">
+            Ваш браузер не поддерживает элемент video.
+        </video>
+      </div>
+      <div class="slide-description">
+        <p>Explore the beauty of endless possibilities.<br>Each moment unfolds a new story to discover.</p>
+        <p>Embrace the harmony of motion and stillness.<br>Let your imagination lead you beyond the horizon.</p>
+      </div>
+      <div class="slide">
+        <canvas class="slide-canvas"></canvas>
+      </div>
+      <div class="slide-description">
+        <p>Explore the beauty of endless possibilities.<br>Each moment unfolds a new story to discover.</p>
+        <p>Embrace the harmony of motion and stillness.<br>Let your imagination lead you beyond the horizon.</p>
+      </div>
+      <div class="slide">
+        <canvas class="slide-canvas"></canvas>
+      </div>
+      <div class="slide-description">
+        <p>Explore the beauty of endless possibilities.<br>Each moment unfolds a new story to discover.</p>
+        <p>Embrace the harmony of motion and stillness.<br>Let your imagination lead you beyond the horizon.</p>
+      </div>
+      <div class="slide">
+        <canvas class="slide-canvas"></canvas>
+      </div>
+      <div class="slide-description">
+        <p>Explore the beauty of endless possibilities.<br>Each moment unfolds a new story to discover.</p>
+        <p>Embrace the harmony of motion and stillness.<br>Let your imagination lead you beyond the horizon.</p>
+      </div>
+    </div>
+    <div class="indicators">
+      <div class="indicator active" data-index="0"></div>
+      <div class="indicator" data-index="1"></div>
+      <div class="indicator" data-index="2"></div>
+      <div class="indicator" data-index="3"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/letterizejs/lib/letterize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
