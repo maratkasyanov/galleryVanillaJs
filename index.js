@@ -11,6 +11,36 @@ const scrollThreshold = 100; // Порог для переключения сл�
 // Флаг для отслеживания состояния наведения на индикаторы
 let isHoveringIndicators = false;
 let lastHoveredIndex = null;
+
+let touchstartX = 0
+let touchendX = 0
+
+function checkDirection() {
+
+    if (touchendX < touchstartX) {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            console.log('swiped left!')
+        }
+    }
+    if (touchendX > touchstartX) {
+        if (currentIndex > 0) {
+            currentIndex--;
+            console.log('swiped right!')
+        }
+    }
+    scrollToSlide(currentIndex);
+}
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    checkDirection()
+})
+
 function switchTextOnSlideChange(index) {
     const height = titles[0].offsetHeight;
     const container = document.querySelector('.dropping-texts');
@@ -27,7 +57,7 @@ function handleScreenResize() {
                 // Задаем значения для неактивных слайдов
                 slide.style.opacity = '0.5';
                 slide.style.transform = 'translateX(100%) scaleY(0.6) scaleX(0.9)';
-                
+
             } else {
                 // Активному слайду задаем значение по умолчанию
                 slide.style.transform = 'translateX(0) scaleY(1) scaleX(1)';
@@ -46,12 +76,12 @@ function handleScreenResize() {
                 slide.style.opacity = '1';
             }
         });
-    }    
-  }
-  
-  // Слушаем изменение размера окна
-  window.addEventListener('resize', handleScreenResize);
-  
+    }
+}
+
+// Слушаем изменение размера окна
+window.addEventListener('resize', handleScreenResize);
+
 // Функция для установки значений по умолчанию всем слайдам
 function setDefaultSlideStyles(width) {
     if (width < 768) {
@@ -60,7 +90,7 @@ function setDefaultSlideStyles(width) {
                 // Задаем значения для неактивных слайдов
                 slide.style.opacity = '0.5';
                 slide.style.transform = 'translateX(100%) scaleY(0.6) scaleX(0.9)';
-                
+
             } else {
                 // Активному слайду задаем значение по умолчанию
                 slide.style.transform = 'translateX(0) scaleY(1) scaleX(1)';
@@ -93,7 +123,7 @@ function scrollToSlide(index) {
     const screenWidth = document.documentElement.clientWidth;
     // console.log(screenWidth, document.documentElement.clientWidth)
     currentIndex = index;
-    if(screenWidth < 768){
+    if (screenWidth < 768) {
         slides.forEach((slide, i) => {
             const offset = i - index;
             if (isHoveringIndicators && lastHoveredIndex === null) {
@@ -111,13 +141,13 @@ function scrollToSlide(index) {
                 slide.style.transform = `translateX(${offset * 100}%) scaleY(${scaleY}) scaleX(${scaleX}) `;
                 slide.style.borderRadius = '10px';
             }
-    
+
             slide.style.opacity = offset === 0 ? '1' : '0.5';
         });
-    }else{
+    } else {
         slides.forEach((slide, i) => {
             const offset = i - index;
-    
+
             if (isHoveringIndicators && lastHoveredIndex === null) {
                 // Если курсор над блоком всех индикаторов, уменьшаем масштаб для всех слайдов, кроме текущего
                 slide.style.transform = `translateY(${offset * 100}%) scale(${i === currentIndex ? 0.95 : 0.8}) `;
@@ -133,7 +163,7 @@ function scrollToSlide(index) {
                 slide.style.transform = `translateY(${offset * 100}%) scaleY(${scaleY}) scaleX(${scaleX}) `;
                 slide.style.borderRadius = '10px';
             }
-    
+
             slide.style.opacity = offset === 0 ? '1' : '0.5';
         });
     }
