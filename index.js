@@ -20,13 +20,11 @@ function checkDirection() {
     if (touchendX < touchstartX) {
         if (currentIndex < slides.length - 1) {
             currentIndex++;
-            console.log('swiped left!')
         }
     }
     if (touchendX > touchstartX) {
         if (currentIndex > 0) {
             currentIndex--;
-            console.log('swiped right!')
         }
     }
     scrollToSlide(currentIndex);
